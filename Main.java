@@ -7,6 +7,9 @@ import java.util.*;
  * N=4 이면 0,1,2,3
  * 둘째줄  각 숫자를 사는데 드는 비용이 작은숫자부터 주어진다. 50보다 작거나 같은 자연수
  * 마지막줄 백은진이 가지고 있는돈 50보다 작거나 같은 수 
+ * 
+ * -> 기회비용 계산이 되지 않았다.
+ * 
  */
 public class Main {
     public static void main(String[] args) {
@@ -30,7 +33,6 @@ public class Main {
 		
         for(int i=0; i<N; i++) {
             int value = sc.nextInt();
-            System.out.println("value : " + value);
 			if(value >= 0 && value <= 50 ) {
                 arrCoast.add(value);
 			}
@@ -39,13 +41,30 @@ public class Main {
         int money = sc.nextInt();
 
 
+        String result = "";
+        int cnt = arrCoast.size() - 1 ;
+
+        while ( cnt >= 0 ) {
+            // System.out.println(money+" / "+arrCoast.get(cnt)+" -> " + money / arrCoast.get(cnt));
+            if(money / arrCoast.get(cnt) >= 1) {
+                result = result + arrCard.get(cnt);
+                money = money - arrCoast.get(cnt);
+                // System.out.println("result : " + result);
+            } else {
+                cnt--;
+            }
+        }
+
+     
 
 
         
-        System.out.println("N : " + N);
-        System.out.println("arrCard : " + arrCard);
-        System.out.println("arrCoast : " + arrCoast);
-        System.out.println("money : " + money);
+        // System.out.println("N : " + N);
+        // System.out.println("arrCard : " + arrCard);
+        // System.out.println("arrCoast : " + arrCoast);
+        // System.out.println("money : " + money);
+        // System.out.println("result : " + result);
+        System.out.println(result);
 
         sc.close();
     }
