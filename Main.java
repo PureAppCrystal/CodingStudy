@@ -16,15 +16,37 @@ public class Main {
         if ( N >10 || N < 0) {
             throw new NoSuchElementException();
         }
-
         
+        ArrayList<Integer> arrCard = new ArrayList<Integer>();
         ArrayList<Integer> arrCoast = new ArrayList<Integer>();
+
+
+        int card = N-1;
+        for(int i=card; i>=0; i--){
+            arrCard.add(i);
+        }
+        Collections.sort(arrCard);
+        
 		
         for(int i=0; i<N; i++) {
-			int value = sc.nextInt();
-			if(value >= 0 && value < N ) {
-				arrCoast.add(value);
+            int value = sc.nextInt();
+            System.out.println("value : " + value);
+			if(value >= 0 && value <= 50 ) {
+                arrCoast.add(value);
 			}
-		}
+        }
+
+        int money = sc.nextInt();
+
+
+
+
+        
+        System.out.println("N : " + N);
+        System.out.println("arrCard : " + arrCard);
+        System.out.println("arrCoast : " + arrCoast);
+        System.out.println("money : " + money);
+
+        sc.close();
     }
 }
