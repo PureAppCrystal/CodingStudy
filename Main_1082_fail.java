@@ -11,7 +11,7 @@ import java.util.*;
  * -> 기회비용 계산이 되지 않았다.
  * 
  */
-public class Main {
+public class Main_1082_fail {
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);
