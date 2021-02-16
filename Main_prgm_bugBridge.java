@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
+/**
+ * 프로그래머스 스택/큐 다리를 건너는 버스 
+ * 큐를 이용한 문제
+ */
 
 // 다리는 길이와 현재무게, 최고무게를 가지고 있는다.
 class Bridge {
