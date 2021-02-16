@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main_1920{
+public class Main_1920_binary{
 
     // 1920
     // 이분탐색
@@ -59,9 +59,49 @@ public class Main_1920{
 
         return -1;
     }
+
+    public int binSearch(String[] list,  String key) {
+        int startNum = 0;
+        int endNum = list.length -1;
+        
+        do {
+            int count = (startNum+endNum) / 2;
+            if(list[count].indexOf(key) == 0) {
+                return count;
+            } else if( Integer.parseInt(list[count].substring(0, key.length())) < Integer.parseInt(key)) {
+                startNum=count + 1;
+            } else {
+                endNum = count -1;
+            } 
+        } while(startNum <= endNum);
+
+        return -1;
+    }
+
+    public int binSearch(ArrayList<String> list, String key) {
+        int startNum = 0;
+        int endNum = list.size() - 1;
+
+        do {
+            int count = (startNum + endNum) / 2;
+            if (list.get(count).indexOf(key) == 0) {
+                return count;
+            } else if (Integer.parseInt(list.get(count).substring(0, key.length())) < Integer.parseInt(key)) {
+                startNum = count + 1;
+            } else {
+                endNum = count - 1;
+            }
+        } while (startNum <= endNum);
+
+        return -1;
+    }
     public static void main(String[] args) {
         
+
         
+        
+        
+
 
         Scanner sc = new Scanner(System.in);
 
@@ -87,6 +127,7 @@ public class Main_1920{
         
 
         ArrayList<Integer> arrResult = new ArrayList<Integer>();
+        
 
 
         for(int i=0; i<M; i++) {
