@@ -1,3 +1,4 @@
+package 기본;
 import java.util.NoSuchElementException;
 
 

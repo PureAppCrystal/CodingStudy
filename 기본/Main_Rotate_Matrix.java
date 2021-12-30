@@ -1,3 +1,4 @@
+package 기본;
 public class Main_Rotate_Matrix {
     public static void main(String[] args) {
         int[][] image = {
