@@ -1,25 +1,40 @@
 package 기본;
 
+import java.util.LinkedList;
+import java.util.Stack;
+
 public class DFS구현 {
 
     public static void main(String[] args) {
         //
-        // DPS_탐색선수.dfs(1);
+        //  DPS_탐색선수.dfs(1);
         //
-        DfsGraph dfsGraph = new DfsGraph(8);
-        dfsGraph.put(1, 2);
-        dfsGraph.put(1, 3);
-        dfsGraph.put(2, 4);
-        dfsGraph.put(2, 5);
-        dfsGraph.put(3, 6);
-        dfsGraph.put(3, 7);
-        dfsGraph.put(4, 8);
-        dfsGraph.put(5, 8);
-        dfsGraph.put(6, 8);
-        dfsGraph.put(7, 8);
-        dfsGraph.printGraphToAdjArr();
-        System.out.print("정점 1부터 탐색 : ");
-        dfsGraph.dfs(1);
+        // DfsGraph dfsGraph = new DfsGraph(8);
+        // dfsGraph.put(1, 2);
+        // dfsGraph.put(1, 3);
+        // dfsGraph.put(2, 4);
+        // dfsGraph.put(2, 5);
+        // dfsGraph.put(3, 6);
+        // dfsGraph.put(3, 7);
+        // dfsGraph.put(4, 8);
+        // dfsGraph.put(5, 8);
+        // dfsGraph.put(6, 8);
+        // dfsGraph.put(7, 8);
+        // dfsGraph.printGraphToAdjArr();
+        // System.out.print("정점 1부터 탐색 : ");
+        // dfsGraph.dfs(1);
+
+        //
+        Graph g = new Graph(6);
+		g.addEdge(0, 1);
+		g.addEdge(0, 2);
+		g.addEdge(1, 3);
+		g.addEdge(1, 4);
+		g.addEdge(2, 5);
+		
+		// g.dfs(0);
+        g.dfs(1);
+        
 
 
 
@@ -32,6 +47,69 @@ public class DFS구현 {
 }
 
 
+
+class Graph {
+
+    class Node {
+        int data;
+        LinkedList<Node> adj;
+        boolean marked;
+
+        public Node(int data) {
+            this.data = data;
+            this.marked = false;
+            adj = new LinkedList<Node>();
+        }
+    }
+
+    Node[] nodes;
+
+    Graph(int size) {
+        nodes = new Node[size];
+        for (int i=0; i<size; i++) {
+            nodes[i] = new Node(i);
+        }
+    }
+
+    void addEdge(int i1, int i2) {
+        Node n1 = nodes[i1];
+        Node n2 = nodes[i2];
+        if(!n1.adj.contains(n2)) {
+            n1.adj.add(n2);
+        }
+        if(!n2.adj.contains(n1)) {
+            n2.adj.add(n1);
+        }
+    }
+
+    void dfs() {
+        dfs(0);
+    }
+
+    void dfs(int index) {
+        Node root = nodes[index];
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        root.marked = true;
+
+        while (!stack.isEmpty()) {
+            Node r = stack.pop();
+            for(Node n : r.adj) {
+                if(n.marked == false ) {
+                    n.marked = true;
+                    stack.push(n);
+                }
+            }
+            // visit(r);
+            System.out.println("["+r.data+"]");
+        }
+    }
+}
+
+
+/**
+ * 2번재
+ */
 class DfsGraph {
     private int n; // 노드의 개수?
     private int[][] dfsGraph; // 그래프
