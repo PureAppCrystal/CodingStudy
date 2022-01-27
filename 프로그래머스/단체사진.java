@@ -10,15 +10,20 @@ public class 단체사진 {
     public static void main(String[] args) {
         int n = 2;
         String[] data = { "N~F=0", "R~T>2" };
-
-        // int result = solution(n, data);
         int result = solution2(n, data);
         System.out.println("result : " + result);
     }
 
     public static int answer = 0;
-    public static String[] friends = {"A", "C", "F", "J", "M", "N", "R", "T"};
+    public static String[] friends = { "A", "C", "F", "J", "M", "N", "R", "T" };
 
+    
+    /**
+     * 구글 해설지 참조, 풀기보다는 이해 목적으로 작성
+     * @param n
+     * @param data
+     * @return
+     */
     public static int solution2(int n, String[] data) {
         boolean[] isVisited = new boolean[8];
         dfs("", isVisited, data);
